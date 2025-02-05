@@ -1,18 +1,23 @@
 <template>
     <div class="elite-content">
         <div class="content-wrapper">
+
             <UserProfile 
                 userName="홍길동 (남자)"
                 sport="축구"
                 height="180"
                 weight="80" 
             />
-            <div class="main-content">
+
+            <div class="main-section">
                 <div class="main-title">
                     <h2>{{ pageTitle }}</h2>
                 </div>
-                <div class="content-area">
-                    <p>현재 입력된 기록이 없습니다. 내 기록 추가를 통해 몸 상태를 기록해 보세요!</p>
+
+                <div class="main-content">
+                    <div class="content-area">
+                        <p>현재 입력된 기록이 없습니다. 내 기록 추가를 통해 몸 상태를 기록해 보세요!</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,47 +52,67 @@ const pageTitle = computed(() => pageTitles[props.activeTab]);
 /* 프로필과 메인 컨텐츠를 감싸는 레이아웃 */
 .content-wrapper {
     display: flex;
-    gap: 40px;
+    gap: 2vw;
     width: 87.5%;
     /* max-width: 1300px; */
 }
 
 .user-profile {
-    flex: 0 0 150px; /* 고정된 너비 */
+    flex: 0 0 10vw; /* 고정된 너비 */
     margin-top: 18vh; /* 화면 높이의 18%만큼 아래로 이동 */
+    max-height: 280px;
 }
 
-
-/* 메인 컨텐츠 (오른쪽 배치) */
-.main-content {
-    flex: 1; /* 남은 공간 모두 차지 */
-    margin-top: 18vh;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+/* 세로 정렬: 타이틀과 컨텐츠 */
+.main-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* 타이틀과 컨텐츠를 세로 정렬 */
+    gap: 1rem; /* 세로 간격 */
+    margin-top: 5vh;
 }
 
 /* 타이틀 스타일 */
 .main-title {
-    padding-bottom: 10px;
-    border-bottom: 2px solid #ddd; /* 구분선 추가 */
-    margin-bottom: 20px;
+    margin-top: 10vh;
+    border-bottom: 2px solid #D6D6D6; /* 구분선 추가 */
+    margin-bottom: 0.8rem;
 }
 
+/* h2에 유동적인 밑줄 적용 */
 .main-title h2 {
-    font-size: 20px;
+    display: inline-block; /* 글자 길이에 맞게 width 조정 */
+    position: relative; /* ::after 가상 요소 위치 기준 */
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
-    margin: 0;
+    color: #3f3f3f;
+}
+
+/* 글자 길이에 맞는 굵은 밑줄 */
+.main-title h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 100%; /* 글자 길이에 맞게 */
+    height: 5px; /* 굵은 밑줄 두께 */
+    background-color: #262626; /* 굵은 밑줄 색상 */
+}
+
+/* 메인 컨텐츠 (오른쪽 배치) */
+.main-content {
+    margin-top: 1.5vh;
+    background: #D6D6D6;
+    padding: 0.5vw;
+    border-radius: 8px;
 }
 
 /* 콘텐츠 스타일 */
 .content-area {
-    font-size: 16px;
-    color: #666;
-    background: #f9f9f9;
-    padding: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #7e7e7e;
+    padding: 0 1rem;
     border-radius: 8px;
 }
 </style>

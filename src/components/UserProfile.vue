@@ -78,10 +78,10 @@ const props = defineProps({
     text-align: center;
     margin-bottom: 0.2vw;
     line-height: 1;
-    /* padding-bottom: 2.5vw; ✅ 마지막 요소 아래 공간 추가 */
+    
 }
 
 .user-info:last-child {
-    margin-bottom: 1.2vw; /* ✅ 마지막 요소인 경우만 아래 여백 추가 */
+    margin-bottom: 1.2vw; /* 마지막 요소인 경우만 아래 여백 추가 */
 }
 </style>
