@@ -1,12 +1,20 @@
 <template>
     <div class="user-profile">
-        <img src="@/assets/profile.png" alt="프로필 이미지" class="profile-image" />
+        <img src="@/assets/images/profile.png" alt="프로필 이미지" class="profile-image" />
+        
         <h2 class="user-name">{{ props.userName }}</h2> <!-- props를 직접 사용 -->
+        
         <div class="user-details">
             <span class="category">종목</span> <span class="divider">|</span> <span class="sport">{{ props.sport }}</span>
         </div>
+
         <p class="user-info">키: {{ props.height }}cm</p>
         <p class="user-info">몸무게: {{ props.weight }}kg</p>
+
+        <div class="profile-buttons">
+            <button class="btn-add-record">내 기록 추가 +</button>
+            <button class="btn-edit-profile">프로필 수정</button>
+        </div>
     </div>
 </template>
 
@@ -83,5 +91,40 @@ const props = defineProps({
 
 .user-info:last-child {
     margin-bottom: 1.2vw; /* 마지막 요소인 경우만 아래 여백 추가 */
+}
+
+/* 버튼 컨테이너 */
+.profile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 3rem;
+    width: 100%;
+}
+
+/* 버튼 공통 스타일 */
+button {
+    width: 128%;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: -1.5rem;
+}
+
+/* 내 기록 추가 버튼 */
+.btn-add-record {
+    background-color: #005871;
+    color: white;
+}
+
+/* 프로필 수정 버튼 */
+.btn-edit-profile {
+    background-color: #C9C9C9;
+    color: #6B6B6B;
+    padding: 0.5rem;
 }
 </style>

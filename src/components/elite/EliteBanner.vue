@@ -1,7 +1,7 @@
 <template>
     <div class="header-wrapper">
-        <div class="header-background">
-            <img src="@/assets/elite.jpg" alt="엘리트 선수 배경" />
+        <div class="header-banner">
+            <img src="@/assets/images/elite.jpg" alt="엘리트 선수 배경" />
         </div>
         <div class="overlay"></div>
         <h1 class="overlay-text">엘리트 선수 기록 분석</h1>
@@ -14,7 +14,7 @@ import TabNavigation from './TabNavigation.vue';
 </script>
 
 <style scoped>
-.header-background {
+.header-banner {
     position: absolute;
     top: 0;
     left: 0; /* Figma 기준 */
@@ -25,7 +25,7 @@ import TabNavigation from './TabNavigation.vue';
     z-index: 0; /* 헤더보다 뒤로 배치 */
 }
 
-.header-background img {
+.header-banner img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* 이미지가 비율을 유지하면서 꽉 차도록 설정 */

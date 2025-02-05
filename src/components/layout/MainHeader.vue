@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="logo">
-            <img src="@/assets/yiu.png" alt="Logo" />
+            <img src="@/assets/images/yiu.png" alt="Logo" />
         </div>
         <nav>
             <ul>
