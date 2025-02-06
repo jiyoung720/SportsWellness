@@ -1,26 +1,27 @@
 <template>
     <div class="header-wrapper">
         <div class="header-banner">
-            <img src="@/assets/images/elitepage.jpg" alt="엘리트 선수 배경" />
+            <img src="@/assets/images/yonginUniversity.png" alt="메인 페이지 배경" />
         </div>
         <div class="overlay"></div>
-        <h1 class="overlay-text">엘리트 선수 기록 분석</h1>
-        <TabNavigation />
+        <div class="overlay-text">
+            <h1>스포츠와 우리를 함께 연결시키는</h1>
+            <p>웰니스연구센터</p>
+        </div>
     </div>
 </template>
 
 <script setup>
-import TabNavigation from './TabNavigation.vue';
+
 </script>
 
 <style scoped>
 .header-banner {
     position: absolute;
     top: 0;
-    left: 0; /* Figma 기준 */
+    left: 0; 
     width: 100%;
-    height: 38%;
-    border-radius: 0px 0px 40px 40px;
+    height: 36.5%;
     overflow: hidden;
     z-index: 0; /* 헤더보다 뒤로 배치 */
 }
@@ -35,12 +36,11 @@ import TabNavigation from './TabNavigation.vue';
 .overlay {
     position: absolute;
     width: 100%;
-    height: 38%; /* 기존 비율에 맞춰 조정 */
+    height: 36.5%; /* 기존 비율에 맞춰 조정 */
     left: 0;
     top: 0;
-    /* top: 9.7%; header 높이 9.7% 바로 아래에서 시작 */
-    background: rgba(89, 58, 47, 0.9); /* #593A2F + opacity 0.9 */
-    border-radius: 0px 0px 40px 40px;
+    background: rgba(0, 0, 0, 0.3); /* 70% 불투명, 30% 투명 */
+    /* border-radius: 0px 0px 40px 40px; */
     z-index: 2; /* 배경 이미지 위에 배치 */
 }
 
@@ -48,19 +48,26 @@ import TabNavigation from './TabNavigation.vue';
     position: absolute;
     width: 100%;
     height: 48px;
-    left: 50%;
+    left: 63.5%;
     top: 15%;
-    transform: translateX(-50%);
+    transform: translate(-50%);
     
-    font-family: 'Pretendard', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.6rem; /* 24px */
-    line-height: 150%; /* 줄 간격이 글자 크기의 1.5배로 설정됨 (반응형 가능) */
-    text-align: center;
+    line-height: 100%; /* 줄 간격이 글자 크기의 1.5배로 설정됨 (반응형 가능) */
+    text-align: left;
     letter-spacing: -0.011em; /* 글자 간격 조정 */
     
     color: #FFFFFF;
     z-index: 3; /* 오버레이 위에 배치 */
 }
+
+.overlay-text h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.overlay-text p {
+    font-size: 1.8rem;
+}
+
+
 </style>
