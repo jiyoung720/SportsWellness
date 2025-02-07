@@ -3,7 +3,9 @@
         {{ title }}
         <div class="dropdown-content">
             <ul>
-                <li v-for="(item, index) in items" :key="index">{{ item }}</li>
+                <li v-for="(item, index) in items" :key="index">{{ item }}
+                    <div v-if="index !== items.length - 1" class="divider"></div>
+                </li>
             </ul>
         </div>
 
@@ -30,7 +32,6 @@ export default {
     display: flex;  /* 부모 항목의 크기를 계산하도록 함 */
     align-items: center; /* 텍스트가 수직으로 중앙에 위치하게 함 */
     height: 100%;
-
     &:hover .dropdown-content{
     display: block;
     opacity: 1;
@@ -60,9 +61,10 @@ export default {
     top: calc(100% + 0.7rem); /* 부모 요소 바로 아래에 0.7rem 띄우기 */
     left: 50%;
     transform: translateX(-50%); /* 드롭다운의 너비의 절반만큼 왼쪽으로 이동시켜 중앙 정렬 */
-    min-width: 140px;
+
+    min-width: 130px;
     z-index: 1;
-    border-radius: 0.4rem;
+    border-radius: 0.5rem;
     overflow: hidden; /* 항목들이 박스 밖으로 나가지 않도록 설정 */
 
     ul {
@@ -77,8 +79,16 @@ export default {
             font-size: 0.85rem;
             font-weight: 500;
             text-align: center;
-            line-height: 1.2rem;
+            line-height: 1.7rem;
 
+            .divider {
+            position: absolute;
+            width: 80%; /* 선의 길이 조절 */
+            height: 0.05vh; /*선의 굵기 조절*/
+            margin-top: 0.5rem; /*선의 위아래 위치 조절*/
+            left: 10%; /* 왼쪽 정렬 위치 조정 */
+            background-color: #E6E6E6;
+            }
             &:hover {
                 color: #72BDD6;
             }

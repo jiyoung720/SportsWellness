@@ -49,6 +49,7 @@ export default {
   background-color: #262626; /* 푸터 배경 어두운 회색 */
   color: #fff; /* 텍스트 흰색 */
   padding: 3vh ;
+  margin:0;
 }
 
 .footer-container {
