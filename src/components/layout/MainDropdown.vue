@@ -3,7 +3,9 @@
         {{ title }}
         <div class="dropdown-content">
             <ul>
-                <li v-for="(item, index) in items" :key="index">{{ item }}</li>
+                <li v-for="(item, index) in items" :key="index">{{ item }}
+                    <div v-if="index !== items.length - 1" class="divider"></div>
+                </li>
             </ul>
         </div>
 
@@ -69,15 +71,7 @@ export default {
         list-style: none;
         margin: 0;
         padding: 0;
-//         .dropdown-menu li {
-//    /* 위아래 여백 10px, 좌우 여백은 제거 */
-//   border-bottom: 0.12vh padding: 0.8vh 0.8vh;solid #ddd; /* 구분선 추가 */
-// }
 
-// /* 마지막 항목의 구분선 없애기 */
-// .dropdown-menu li:last-child {
-//   border-bottom: none;
-// }
         li {
             color: #000000;
             padding: 0.5rem 0; /* 좌우 여백 제거, 세로 패딩 유지 */
@@ -85,16 +79,22 @@ export default {
             font-size: 0.85rem;
             font-weight: 500;
             text-align: center;
-            line-height: 1.2rem;
-            border-bottom: 0.12vh solid #ddd; /* 구분선 추가 */
-            /* 마지막 항목의 구분선 없애기 */
-            li:last-child{
-                border-bottom: none;
+            line-height: 1.7rem;
+         
+            .divider {
+            position: absolute;
+            width: 80%; /* 선의 길이 조절 */
+            height: 0.05vh; /*선의 굵기 조절*/
+            margin-top: 0.5rem; /*선의 위아래 위치 조절*/
+            left: 10%; /* 왼쪽 정렬 위치 조정 */
+            background-color: #E6E6E6;
             }
             &:hover {
                 color: #72BDD6;
             }
         }
+
+        
     }
 }
 </style>
