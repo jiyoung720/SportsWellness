@@ -5,25 +5,38 @@
         </div>
         <nav>
             <ul>
-                <MainDropdown title="연구소 소개" :items="labIntroItems" />
-                <MainDropdown title="실험실 장비" :items="labEquipmentItems" />
-                <MainDropdown title="국민체력100" :items="fitnessItems" />
-                
-                <!-- (동민)router-link를 사용하여 클릭 시 /login으로 이동 -->
-                <li>
-                    <router-link to="/login" class="nav-item">엘리트 선수 관리 시스템</router-link>
-                </li>
+                <MainDropdown title="연구소 소개" :items="labIntroItems" :navigateToPage="navigateToPage" />
+                <MainDropdown title="실험실 장비" :items="labEquipmentItems" :navigateToPage="navigateToPage" />
+                <MainDropdown title="국민체력100" :items="fitnessItems" :navigateToPage="navigateToPage" />
+                <MainDropdown title="엘리트 선수 관리 시스템" :items="eliteItems" :navigateToPage="navigateToPage" />
             </ul>
         </nav>
     </header>
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import MainDropdown from './MainDropdown.vue';
 
 export default {
     components: { MainDropdown },
-    data() {
+    setup() {
+        const router = useRouter();  // setup에서 useRouter() 호출
+        const isLoggedIn = ref(false);  // 로그인 상태 관리
+
+        // 드롭다운 아이템 클릭 시 호출되는 메소드
+        const navigateToPage = (item) => {
+            console.log(item);
+
+            if (isLoggedIn.value) {
+                // 로그인 상태에 따라 다르게 처리 (나중에 로그인 기능 구현 시 변경 필요)
+                router.push(`/elite-player`);  // 임시로 /elite-player 페이지로 이동
+            } else {
+                router.push('/login');  // 로그인 안 되어 있으면 로그인 페이지로 이동
+            }
+        };
+
         return {
             labIntroItems: [
                 '인사말',
@@ -54,6 +67,8 @@ export default {
                 'AI 경기력분석',
                 'DASH 소프트',
             ],
+            isLoggedIn,  // 로그인 상태
+            navigateToPage,  // 메소드 반환
         };
     },
 }

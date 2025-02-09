@@ -1,14 +1,15 @@
 <template>
     <li class="dropdown">
-        {{ title }}
+        <a @click="handleTitleClick">{{ title }}</a>
+
         <div class="dropdown-content">
             <ul>
-                <li v-for="(item, index) in items" :key="index">{{ item }}
+                <li v-for="(item, index) in items" :key="index" @click="navigateToPage(item)">
+                    {{ item }}
                     <div v-if="index !== items.length - 1" class="divider"></div>
                 </li>
             </ul>
         </div>
-
     </li>
 </template>
 
@@ -17,7 +18,19 @@ export default {
     props: {
         title: String,
         items: Array,
+        navigateToPage: Function,
+        // isTitleClickable: {
+        // type: Boolean,
+        // default: false,
+        // },
+    },    
+    methods: {
+        // 타이틀 클릭 시 호출되는 메소드
+        handleTitleClick() {
+        this.navigateToPage(this.title);  // 타이틀 클릭 시 navigateToPage 호출
+        },
     },
+    
 };
 </script>
 
