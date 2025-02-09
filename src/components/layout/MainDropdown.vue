@@ -19,18 +19,13 @@ export default {
         title: String,
         items: Array,
         navigateToPage: Function,
-        // isTitleClickable: {
-        // type: Boolean,
-        // default: false,
-        // },
     },    
     methods: {
         // 타이틀 클릭 시 호출되는 메소드
         handleTitleClick() {
         this.navigateToPage(this.title);  // 타이틀 클릭 시 navigateToPage 호출
         },
-    },
-    
+    },   
 };
 </script>
 
