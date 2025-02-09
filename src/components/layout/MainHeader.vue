@@ -8,7 +8,11 @@
                 <MainDropdown title="연구소 소개" :items="labIntroItems" />
                 <MainDropdown title="실험실 장비" :items="labEquipmentItems" />
                 <MainDropdown title="국민체력100" :items="fitnessItems" />
-                <MainDropdown title="엘리트 선수 관리 시스템" :items="eliteItems" />
+                
+                <!-- (동민)router-link를 사용하여 클릭 시 /login으로 이동 -->
+                <li>
+                    <router-link to="/login" class="nav-item">엘리트 선수 관리 시스템</router-link>
+                </li>
             </ul>
         </nav>
     </header>
