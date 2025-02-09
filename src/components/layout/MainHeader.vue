@@ -1,6 +1,6 @@
 <template>
     <header>
-        <div class="logo">
+        <div class="logo"> 
             <img src="@/assets/images/yiu.png" alt="Logo" />
         </div>
         <nav>
