@@ -1,7 +1,7 @@
 <template>
   <div class="page-container">
     <div class="content">
-
+      
     </div>
     <footer class="footer">
       <div class="footer-container">
@@ -35,7 +35,7 @@ export default {
   display: flex;
   flex-direction: column; 
   width: 100%;
-  min-height: 64vh; /* 화면 전체 높이 */
+  min-height: 19vh; /* 화면 전체 높이 */
   
 }
 

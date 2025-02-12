@@ -39,10 +39,10 @@ const pageTitle = computed(() => pageTitles[props.activeTab]);
 
 <style scoped>
 .elite-content {
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
-    height: 100vh;
-    top: 30%;
+    height: 130vh;
+    top: 40vh;
     left: 0;
     background: #F4F4F4;
     overflow: hidden; /* 내용이 넘칠 경우 스크롤바 표시 */
@@ -59,7 +59,7 @@ const pageTitle = computed(() => pageTitles[props.activeTab]);
 
 .user-profile {
     flex: 0 0 10vw; /* 고정된 너비 */
-    margin-top: 18vh; /* 화면 높이의 18%만큼 아래로 이동 */
+    margin-top: 47vh; /* 화면 높이의 18%만큼 아래로 이동 */
     max-height: 280px;
 }
 
@@ -69,7 +69,7 @@ const pageTitle = computed(() => pageTitles[props.activeTab]);
     display: flex;
     flex-direction: column; /* 타이틀과 컨텐츠를 세로 정렬 */
     gap: 1rem; /* 세로 간격 */
-    margin-top: 5vh;
+    margin-top: 34vh;
 }
 
 /* 타이틀 스타일 */

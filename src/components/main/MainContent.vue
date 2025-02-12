@@ -68,7 +68,7 @@ export default {
   position: relative;
   display: flex;
   justify-content: center;
-  
+  margin-bottom: 50vh;
   gap: 30px;
 }
 
