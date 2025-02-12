@@ -1,18 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import MainPage from '@/pages/MainPage.vue';
-import ElitePlayerPage from '@/pages/ElitePlayerPage.vue';
 
 const routes = [
     {
         path: '/',
         name: 'MainPage',
-        component: MainPage, // 메인 페이지 경로 설정
+        component: () => import('@/pages/MainPage.vue'),
     },
-    
     {
         path: '/elite-player',
         name: 'ElitePlayerPage',
-        component: ElitePlayerPage,  // 엘리트 선수 페이지 경로 설정
+        component: () => import('@/pages/ElitePlayerPage.vue'),
+    },
+    {
+        path: '/login',
+        name: 'UserLogin',
+        component: () => import('@/pages/auth/UserLogin.vue'),
+        alias: '/sign-in', // /sign-in으로도 접근 가능
+    },
+    {
+        path: '/register',
+        name: 'UserRegister',
+        component: () => import('@/pages/auth/UserRegister.vue'),
+        alias: '/sign-up', // /sign-up으로도 접근 가능
     },
 ];
 
