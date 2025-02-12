@@ -12,21 +12,34 @@
         <p class="user-info">몸무게: {{ props.weight }}kg</p>
 
         <div class="profile-buttons">
-            <button class="btn-add-record">내 기록 추가 +</button>
-            <button class="btn-edit-profile">프로필 수정</button>
-        </div>
+      <!-- 버튼 클릭 시 openAddRecordModal 함수 호출 -->
+      <button class="btn-add-record" @click="openAddRecordModal">내 기록 추가 +</button>
+      <button class="btn-edit-profile">프로필 수정</button>
+      <!-- 모달 컴포넌트, showAddRecordModal 값에 따라 렌더링 -->
+        <EliteModal v-model:show="showAddRecordModal" />
     </div>
+  </div>
+
+  
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-
+import { ref,defineProps } from 'vue';
+import EliteModal from './EliteModal.vue'; // 파일 경로에 맞게 수정
 const props = defineProps({
     userName: String,
     sport: String,
     height: Number,
     weight: Number
 });
+
+// 내 기록 추가 모달의 표시 여부를 관리하는 상태
+const showAddRecordModal = ref(false);
+
+// 내 기록 추가 버튼 클릭 시 모달 열기
+const openAddRecordModal = () => {
+  showAddRecordModal.value = true;
+};
 </script>
 
 <style scoped>

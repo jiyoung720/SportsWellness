@@ -96,13 +96,13 @@ export default {
   width: 0.5px;
   height: 75%;
   background-color: #fff; /* 세로 구분선 색상 */
-  margin-right: 20%; /* 구분선을 왼쪽으로 이동시키기 위해 margin-right 사용 */
+  margin-right: 15%; /* 구분선을 왼쪽으로 이동시키기 위해 margin-right 사용 */
 }
 
 .copyright {
   flex-basis: 100%; /* 한 줄 전체를 차지 */
   text-align: right;
-  margin-top: 20px;
+  margin-top: 25px;
   font-size: 12px;
   padding-top: 10px;
   transform: translate(30%, -8%);
