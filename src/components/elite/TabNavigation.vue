@@ -15,7 +15,7 @@
 <script setup>
 import { ref, defineEmits } from 'vue';
 
-const tabs = ['체력측정분석', 'AI 동작분석', 'AI 경기력분석', 'DASH 소프트'];
+const tabs = ['체력측정분석', '경기기록'];
 const activeTab = ref(0);
 
 const emit = defineEmits(['update:activeTab']);
@@ -29,15 +29,15 @@ const selectTab = (index) => {
 <style scoped>
 .tab-navigation {
     position: absolute;
-    width: 75%; /* 반응형을 고려한 비율 */
-    height: 7%; /* 기존 배경의 비율에 맞게 조정 */
-    left: 50%;
+    width: 25%; /* 네비게이션 너비 */
+    height: 7%; /* 네비게이션 높이 */
+    left: 25%;
     top: 34.5%; /* 오버레이 아래 위치 */
     transform: translateX(-50%);
     
     background: #FFFFFF;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 8px;
+    /* border-radius: 8px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,7 +47,7 @@ const selectTab = (index) => {
 
 /* 탭 버튼 스타일 */
 button {
-    width: 25%; /* 탭 네비게이션의 25% */
+    width: 50%; /* 탭 네비게이션의 50% */
     height: 100%; /* 네비게이션과 같은 높이 */
     background: none;
     border: none;
@@ -55,7 +55,7 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: 0.2s;
-    color: #333;
+    color: #2D2D2D;
 
     position: relative; /* 구분선 위치 조정 */
     display: flex;
@@ -70,7 +70,7 @@ button:hover {
 button.active {
     background: #333;
     color: white;
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
 
 .divider {

@@ -32,7 +32,7 @@ const props = defineProps({
   activeTab: Number, // 부모(App.vue)에서 내려받는 activeTab 값
 });
 
-const pageTitles = ['체력측정분석', 'AI 동작분석', 'AI 경기력분석', 'DASH 소프트'];
+const pageTitles = ['체력측정분석', '경기기록'];
 
 const pageTitle = computed(() => pageTitles[props.activeTab]);
 </script>
