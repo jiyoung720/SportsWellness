@@ -12,17 +12,38 @@
     <div class="register-box">
       <h2 class="title">회원가입</h2>
 
+      <!-- 학생 / 관리자 선택 버튼 -->
+      <div class="role-selection">
+        <button
+          :class="['role-btn', { active: userRole === 'student' }]"
+          @click="selectRole('student')"
+        >
+          학생
+        </button>
+        <button
+          :class="['role-btn', { active: userRole === 'admin' }]"
+          @click="selectRole('admin')"
+        >
+          관리자
+        </button>
+      </div>
+
       <form @submit.prevent="handleRegister" class="register-form">
-        <!-- 아이디 입력 -->
-        <div class="form-group">
+        <!-- 아이디 입력 + 중복 확인 버튼 -->
+        <div class="form-group username-group">
           <label for="username">아이디</label>
-          <input
-            id="username"
-            type="text"
-            v-model="formData.username"
-            placeholder="아이디를 입력해주세요."
-            required
-          />
+          <div class="input-group">
+            <input
+              id="username"
+              type="text"
+              v-model="formData.username"
+              placeholder="아이디를 입력해주세요."
+              required
+            />
+            <button type="button" class="check-btn" @click="checkUsernameAvailability">
+              중복 확인
+            </button>
+          </div>
         </div>
 
         <!-- 비밀번호 입력 -->
@@ -126,6 +147,7 @@ export default {
         email: "",
         agree: false,
       },
+      userRole: null, // 'student' 또는 'admin' 저장
     };
   },
   methods: {
@@ -134,6 +156,13 @@ export default {
     },
     goToLogin() {
       this.$router.push("/login");
+    },
+    selectRole(role) {
+      this.userRole = role;
+    },
+    checkUsernameAvailability() {
+      console.log("아이디 중복 확인 실행:", this.formData.username);
+      alert("아이디 중복 확인 기능입니다.");
     },
   },
 };
@@ -172,7 +201,7 @@ export default {
 /* 회원가입 박스 */
 .register-box {
   position: absolute;
-  top: 20%;
+  top: 15%;
   background: white;
   padding: 3rem;
   border-radius: 8px;
@@ -183,54 +212,53 @@ export default {
   align-items: center;
 }
 
-.title {
-  font-size: 36px;
-  font-weight: 600;
-  color: black;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-/* 입력 폼 */
-.register-form {
+/* 학생 / 관리자 선택 버튼 */
+.role-selection {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-.form-group label {
-  font-size: 20px;
-  font-weight: 600;
-  color: #3f3f3f;
-  margin-bottom: 8px;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 12px 24px;
+.role-btn {
+  padding: 10px 20px;
+  font-size: 16px;
   border: 2px solid #737373;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 6px;
+  background: white;
   color: #737373;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* 개인정보 동의 체크박스 */
-.checkbox-group {
+.role-btn.active {
+  background: #737373;
+  color: white;
+}
+
+/* 아이디 입력 + 중복 확인 버튼 */
+.username-group .input-group {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 10px;
 }
 
-.checkbox-group label {
-  font-size: 16px;
-  color: #3f3f3f;
+.input-group input {
+  flex: 1;
+}
+
+.check-btn {
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #005871;
+  border-radius: 6px;
+  background: white;
+  color: #005871;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.check-btn:hover {
+  background: #005871;
+  color: white;
 }
 
 /* 가입 버튼 */

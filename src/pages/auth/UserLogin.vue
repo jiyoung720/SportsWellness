@@ -11,15 +11,28 @@
     <!-- 로그인 박스 -->
     <div class="login-box">
       <h2 class="title">로그인</h2>
+      <p class="subtitle">엘리트 선수 기록 관리 시스템은 로그인 후 이용 가능합니다.</p>
+
       <form class="login-form">
         <div class="form-group">
           <label for="username">아이디</label>
           <input type="text" id="username" v-model="formData.username" placeholder="아이디를 입력해주세요." />
         </div>
 
-        <div class="form-group">
+        <div class="form-group password-group">
           <label for="password">비밀번호</label>
-          <input type="password" id="password" v-model="formData.password" placeholder="비밀번호를 입력해주세요." />
+          <input
+            :type="showPassword ? 'text' : 'password'"
+            id="password"
+            v-model="formData.password"
+            placeholder="비밀번호를 입력해주세요."
+          />
+          <img
+            src="@/assets/images/eye.svg"
+            alt="Toggle Password Visibility"
+            class="eye-icon"
+            @click="togglePassword"
+          />
         </div>
 
         <div class="checkbox-group">
@@ -29,6 +42,9 @@
 
         <button type="submit" class="login-btn">로그인</button>
       </form>
+
+      <!-- 또는 구분선 -->
+      <div class="divider"><span>또는</span></div>
 
       <div class="register-link">
         <span @click="goToRegister">회원가입 하러가기</span>
@@ -56,11 +72,15 @@ export default {
         password: "",
         rememberMe: false,
       },
+      showPassword: false, // 비밀번호 표시 여부
     };
   },
   methods: {
     goToRegister() {
       this.$router.push("/register");
+    },
+    togglePassword() {
+      this.showPassword = !this.showPassword;
     },
   },
 };
@@ -114,8 +134,20 @@ export default {
   font-size: 36px;
   font-weight: 600;
   color: black;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
+}
+
+/* 추가된 안내 문구 스타일 */
+.subtitle {
+  color: var(--Gr-02, #737373);
+  font-family: KoPubWorldDotum;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 /* 입력 폼 */
@@ -128,6 +160,7 @@ export default {
 .form-group {
   display: flex;
   flex-direction: column;
+  position: relative;
   margin-bottom: 20px;
 }
 
@@ -145,6 +178,34 @@ export default {
   border-radius: 8px;
   font-size: 16px;
   color: #737373;
+}
+
+/* 비밀번호 입력 필드 스타일 */
+.password-group {
+  position: relative;
+}
+
+.password-group input {
+  padding-right: 50px; /* 아이콘 공간 확보 */
+}
+
+/* 눈 아이콘 스타일 */
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30.652px;
+  height: 24.102px;
+  flex-shrink: 0;
+  fill: var(--Gr-02, #737373);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.eye-icon:hover {
+  opacity: 1;
 }
 
 /* 로그인 유지 체크박스 */
@@ -178,9 +239,33 @@ export default {
   background: #d4d4d4;
 }
 
+/* "또는" 구분선 스타일 */
+.divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background: #ccc;
+}
+
+.divider span {
+  padding: 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #737373;
+  font-family: KoPubWorldDotum;
+}
+
 /* 회원가입 링크 */
 .register-link {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 20px;
   color: #005871;
   cursor: pointer;
