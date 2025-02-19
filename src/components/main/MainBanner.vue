@@ -6,7 +6,7 @@
         <div class="overlay"></div>
         <div class="overlay-text">
             <h1>스포츠와 우리를 함께 연결시키는</h1>
-            <p>웰니스연구센터</p>
+            <p>스포츠·웰니스연구센터</p>
         </div>
     </div>
 </template>
@@ -22,6 +22,7 @@
     left: 0; 
     width: 100%;
     height: 36.5%;
+    border-radius: 0px 0px 40px 40px;
     overflow: hidden;
     z-index: 0; /* 헤더보다 뒤로 배치 */
 }
@@ -40,7 +41,7 @@
     left: 0;
     top: 0;
     background: rgba(0, 0, 0, 0.3); /* 70% 불투명, 30% 투명 */
-    /* border-radius: 0px 0px 40px 40px; */
+    border-radius: 0px 0px 40px 40px;
     z-index: 2; /* 배경 이미지 위에 배치 */
 }
 
@@ -62,11 +63,12 @@
 
 .overlay-text h1 {
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: 300;
 }
 
 .overlay-text p {
     font-size: 1.8rem;
+    font-weight: 700;
 }
 
 

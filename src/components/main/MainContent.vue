@@ -52,7 +52,7 @@ export default {
   flex-direction: column;
   align-items: center;
   transform:translateY(-20%);
-  margin-top: 24vh;
+  margin-top: 17vh;
 }
 .content h2{
   font-size: 2rem;
@@ -62,13 +62,14 @@ export default {
 .content p{
   font-size: 1rem;
   font-weight:bold;
+  margin-top: -1vh;
 }
 
 .pictures{
   position: relative;
   display: flex;
   justify-content: center;
-  margin-bottom: 50vh;
+  margin-bottom: 20vh;
   gap: 30px;
 }
 

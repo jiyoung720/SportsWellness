@@ -69,10 +69,9 @@ export default {
     top: calc(100% + 0.7rem); /* 부모 요소 바로 아래에 0.7rem 띄우기 */
     left: 50%;
     transform: translateX(-50%); /* 드롭다운의 너비의 절반만큼 왼쪽으로 이동시켜 중앙 정렬 */
-
-    min-width: 130px;
+    min-width: 138px;
     z-index: 1;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     overflow: hidden; /* 항목들이 박스 밖으로 나가지 않도록 설정 */
 
     ul {
@@ -81,20 +80,20 @@ export default {
         padding: 0;
 
         li {
-            color: #000000;
-            padding: 0.5rem 0; /* 좌우 여백 제거, 세로 패딩 유지 */
+            color: #737373;
+            padding: 0.5rem 0rem; /* 좌우 여백 제거, 세로 패딩 유지 */
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
             text-align: center;
             line-height: 1.7rem;
 
             .divider {
             position: absolute;
-            width: 80%; /* 선의 길이 조절 */
+            width: 60%; /* 선의 길이 조절 */
             height: 0.05vh; /*선의 굵기 조절*/
             margin-top: 0.5rem; /*선의 위아래 위치 조절*/
-            left: 10%; /* 왼쪽 정렬 위치 조정 */
+            left: 21%; /* 왼쪽 정렬 위치 조정 */
             background-color: #E6E6E6;
             }
             &:hover {

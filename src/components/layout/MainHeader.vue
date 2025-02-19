@@ -5,8 +5,8 @@
         </div>
         <nav>
             <ul>
-                <MainDropdown title="연구소 소개" :items="labIntroItems" :navigateToPage="navigateToPage" />
-                <MainDropdown title="실험실 장비" :items="labEquipmentItems" :navigateToPage="navigateToPage" />
+                <MainDropdown title="스포츠ㆍ웰니스연구센터 소개" :items="labIntroItems" :navigateToPage="navigateToPage" />
+                <MainDropdown title="스포츠ㆍ웰니스연구센터 연구실" :items="labEquipmentItems" :navigateToPage="navigateToPage" />
                 <MainDropdown title="국민체력100" :items="fitnessItems" :navigateToPage="navigateToPage" />
                 <MainDropdown title="엘리트 선수 관리 시스템" :items="eliteItems" :navigateToPage="navigateToPage" />
             </ul>
@@ -46,26 +46,20 @@ export default {
                 '위치 및 연락처',
             ],
             labEquipmentItems: [
-                '운동 생리학',
-                '운동 생화학',
+                '운동생리학 & 생화학',
                 '운동 역학',
-                '체육 측정 평가',
-                '세미나실',
-                '스터디룸',
-                '주요 장비',
+                '세미나실 & 스터디룸',
             ],
-            fitnessItems: [
-                '소개(헬스업)',
-                '측정 항목',
-                '측정 절차',
-                '피드백',
-                'Y-Fit 소프트',
-            ],
+            // fitnessItems: [
+            //     '소개(헬스업)',
+            //     '측정 항목',
+            //     '측정 절차',
+            //     '피드백',
+            //     'Y-Fit 소프트',
+            // ],
             eliteItems: [
                 '체력 측정분석',
-                'AI 동작분석',
-                'AI 경기력분석',
-                'DASH 소프트',
+                '경기 기록',
             ],
             isLoggedIn,  // 로그인 상태
             navigateToPage,  // 메소드 반환
@@ -79,8 +73,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.8); /* 70% 불투명, 30% 투명 */
-    padding: 0.8rem 13rem;
+    background-color: rgba(0, 0, 0, 0); /* 80% 불투명, 20% 투명 */
+    padding: 0.8rem 12rem;
     width: 100%;
     height: 6%; /* 높이 6% */
     position: fixed;
@@ -100,7 +94,7 @@ header {
             list-style: none;
             margin: 0;
             padding: 0;
-            padding-right: 24rem; /* 왼쪽으로 이동 */
+            padding-right: 22rem; /* 왼쪽으로 이동 */
         }
 
         li {
