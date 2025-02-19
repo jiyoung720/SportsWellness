@@ -23,7 +23,7 @@ export default {
     components: { MainDropdown },
     setup() {
         const router = useRouter();  // setup에서 useRouter() 호출
-        const isLoggedIn = ref(false);  // 로그인 상태 관리
+        const isLoggedIn = ref(true);  // 로그인 상태 관리
 
         // 드롭다운 아이템 클릭 시 호출되는 메소드
         const navigateToPage = (item) => {

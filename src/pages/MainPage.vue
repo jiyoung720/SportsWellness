@@ -37,6 +37,7 @@ export default {
 .hero {
   flex-grow: 1; /* 내용 영역을 푸터 위로 밀어내기 */
 }
+
 body {
   overflow-x: hidden;
 }
