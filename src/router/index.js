@@ -23,6 +23,11 @@ const routes = [
         component: () => import('@/pages/auth/UserRegister.vue'),
         alias: '/sign-up', // /sign-up으로도 접근 가능
     },
+    {
+        path: '/detail/:section',  // 동적 라우팅 추가
+        name: 'DetailPage',
+        component: () => import('@/pages/DetailPage.vue'),
+    },
 ];
 
 const router = createRouter({
