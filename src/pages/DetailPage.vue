@@ -2,7 +2,7 @@
     <div class="detail-container">
         <MainHeader />
         <DetailBanner />
-
+        <BreadcrumbDropdown />
         <component :is="currentComponent" />
         <MainFooter />
     </div>
@@ -11,6 +11,7 @@
 <script>
 import MainHeader from '@/components/layout/MainHeader.vue';
 import DetailBanner from '@/components/details/DetailBanner.vue';
+import BreadcrumbDropdown from '@/components/details/BreadcrumbDropdown.vue';
 import MainFooter from '@/components/layout/MainFooter.vue';
 import LocationPage from '@/components/details/LocationPage.vue';
 
@@ -19,6 +20,7 @@ import LocationPage from '@/components/details/LocationPage.vue';
         components: {
             MainHeader,
             DetailBanner,
+            BreadcrumbDropdown,
             LocationPage,    
             MainFooter,
             
