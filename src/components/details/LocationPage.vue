@@ -17,23 +17,24 @@
 .location-content {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 중앙 정렬 */
+    align-items: center;
     justify-content: center;
     width: 100%;
     height: 120vh;
-    margin-top: 25vh;
+    margin-top: 20vh;
 }
 
 .location-title {
     font-size: 24px;
     font-weight: 500;
-    margin-bottom: 5vh;
+    margin-bottom: 4vh;
+    margin-right: 64%;
 }
 
 .location-map {
-    width: 80%; /* 화면 너비의 80% */
-    max-width: 900px; /* 최대 너비 제한 */
+    width: 90%;
+    height: 55%;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* 중앙 정렬 */
 }
 </style>
