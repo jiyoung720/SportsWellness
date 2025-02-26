@@ -74,7 +74,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: rgba(0, 0, 0, 0); /* 80% 불투명, 20% 투명 */
-    padding: 0.8rem 12rem;
+    padding: 0.8rem 11rem;
     width: 100%;
     height: 6%; /* 높이 6% */
     position: fixed;
@@ -94,7 +94,7 @@ header {
             list-style: none;
             margin: 0;
             padding: 0;
-            padding-right: 22rem; /* 왼쪽으로 이동 */
+            padding-right: 20rem; /* 왼쪽으로 이동 */
         }
 
         li {

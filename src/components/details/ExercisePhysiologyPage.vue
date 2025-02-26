@@ -22,20 +22,22 @@ export default {
     align-items: center; /* 중앙 정렬 */
     justify-content: center;
     width: 100%;
-    height: 200vh;
+    height: 215vh;
     margin-top: 28vh;
 }
 
 .exercisephysiology-content h1 {
   position: relative;
-  bottom: 10px;
-  right: 495px;
+  margin-bottom: 4vh;
+  margin-right: 62%;
   font-weight: 500;
-  font-size: 35px;
+  font-size: 1.7rem;
   color: #3F3F3F;
 }
+
 img {
-  width: 1275px;
+  width: 76.7%;
+  height: auto;
   object-fit: cover; /* 이미지가 잘리지 않도록 조절 */
 }
 

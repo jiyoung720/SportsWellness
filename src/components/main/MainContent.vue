@@ -1,7 +1,7 @@
 <template>
   <div class="SportsAndHealth">
-    <a class="sports">Sports</a>
-    <a class="health">Health</a>
+    <a class="sports">SPORTS</a>
+    <a class="health">HEALTH</a>
   </div>
   <div class="content">
     <h2>웰니스 연구센터란?</h2>
@@ -38,13 +38,13 @@ export default {
   display: flex;
   justify-content: space-between;
   position:relative;
-  top:37vh;
+  top:39vh;
 }
 .sports{
   transform: translate(0,-25%);
 }
 .health{
-  transform:translate(0,45%) ;
+  transform:translate(0,285%) ;
 }
 
 .content{

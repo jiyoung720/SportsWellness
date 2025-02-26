@@ -92,7 +92,7 @@ export default {
 .breadcrumb-container {
     position: absolute;
     top: 33%;
-    left: 13%;
+    left: 11.5%;
     width: auto;
     min-width: 30%;
     height: 7%;

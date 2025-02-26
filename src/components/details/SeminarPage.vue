@@ -26,16 +26,16 @@ export default {
     align-items: center; /* 중앙 정렬 */
     justify-content: center;
     width: 100%;
-    height: 90vh;
-    margin-top: 35vh;
+    height: 85vh;
+    margin-top: 37.5vh;
 }
 
 .seminar-content h1 {
   position: relative;
-  bottom: 10px;
-  right: 490px;
+  margin-bottom: 4vh;
+  margin-right: 62%;
   font-weight: 500;
-  font-size: 35px;
+  font-size: 1.7rem;
   color: #3F3F3F;
 }
 
@@ -43,18 +43,19 @@ export default {
   display: flex;
   align-items: center; /* 세로 정렬 */
   gap: 30px; /* 연락처와 전화번호 사이 간격 */
-  transform: translate(100px,-70px);
-  font-size: 15px;
+  transform: translate(100px,-57px);
+  font-size: 0.8rem;
   font-weight: 700;
 }
 .contact h3 {
- color: #262626;
+  color: #262626;
 }
 .contact p {
   color: #3F3F3F;
 }
 img {
-  width: 1275px;
+  width: 76.5%;
+  height: auto;
   object-fit: cover; /* 이미지가 잘리지 않도록 조절 */
 }
 </style>

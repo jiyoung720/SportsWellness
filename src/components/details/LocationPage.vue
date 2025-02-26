@@ -20,20 +20,21 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 120vh;
-    margin-top: 20vh;
+    height: 110vh;
+    margin-top: 30.5vh;
 }
 
 .location-title {
-    font-size: 24px;
+    font-size: 1.7rem;
     font-weight: 500;
     margin-bottom: 4vh;
-    margin-right: 64%;
+    margin-right: 66.5%;
+    color: #3F3F3F;
 }
 
 .location-map {
     width: 90%;
-    height: 55%;
+    height: 63.2%;
     display: flex;
     justify-content: center; /* 중앙 정렬 */
 }
