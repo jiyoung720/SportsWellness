@@ -16,6 +16,7 @@ import MainFooter from '@/components/layout/MainFooter.vue';
 import LocationPage from '@/components/details/LocationPage.vue';
 import ExercisePhysiologyPage from '@/components/details/ExercisePhysiologyPage.vue';
 import SeminarPage from '@/components/details/SeminarPage.vue';
+import KineticsPage from '@/components/details/KineticsPage.vue';
     export default {
         name: 'DetailPage',
         components: {
@@ -25,6 +26,7 @@ import SeminarPage from '@/components/details/SeminarPage.vue';
             LocationPage,
             ExercisePhysiologyPage,
             SeminarPage,
+            KineticsPage,
             MainFooter,
             
         },
@@ -33,8 +35,9 @@ import SeminarPage from '@/components/details/SeminarPage.vue';
                 // 현재 URL의 section 값에 따라 컴포넌트 매칭
                 const pageMap = {
                     'location': LocationPage,
+                    'exercisephysiology':ExercisePhysiologyPage,
                     'seminar' : SeminarPage,
-                    'exercisephysiology': ExercisePhysiologyPage,
+                    'kinetics': KineticsPage
 
                 };
                 return pageMap[this.$route.params.section] || LocationPage; // 기본값: 인사말(임시로 location)
