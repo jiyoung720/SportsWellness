@@ -14,14 +14,17 @@ import DetailBanner from '@/components/details/DetailBanner.vue';
 import BreadcrumbDropdown from '@/components/details/BreadcrumbDropdown.vue';
 import MainFooter from '@/components/layout/MainFooter.vue';
 import LocationPage from '@/components/details/LocationPage.vue';
-
+import ExercisePhysiologyPage from '@/components/details/ExercisePhysiologyPage.vue';
+import SeminarPage from '@/components/details/SeminarPage.vue';
     export default {
         name: 'DetailPage',
         components: {
             MainHeader,
             DetailBanner,
             BreadcrumbDropdown,
-            LocationPage,    
+            LocationPage,
+            ExercisePhysiologyPage,
+            SeminarPage,
             MainFooter,
             
         },
@@ -30,6 +33,8 @@ import LocationPage from '@/components/details/LocationPage.vue';
                 // 현재 URL의 section 값에 따라 컴포넌트 매칭
                 const pageMap = {
                     'location': LocationPage,
+                    'seminar' : SeminarPage,
+                    'exercisephysiology': ExercisePhysiologyPage,
 
                 };
                 return pageMap[this.$route.params.section] || LocationPage; // 기본값: 인사말(임시로 location)
