@@ -1,9 +1,7 @@
 <template>
     <div class = "location-content">
         <h2 class="location-title">위치 및 연락처</h2>
-        <div class = "location-map">
-            <img src = "../../assets/images/map.png" alt = "location">
-        </div>
+        <img src = "../../assets/images/map.png" alt = "location">
     </div>
 </template>
 
@@ -20,8 +18,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 110vh;
-    margin-top: 30.5vh;
+    height: 105vh;
+    margin-top: 35vh;
 }
 
 .location-title {
@@ -32,10 +30,9 @@
     color: #3F3F3F;
 }
 
-.location-map {
-    width: 90%;
-    height: 63.2%;
-    display: flex;
-    justify-content: center; /* 중앙 정렬 */
+img {
+    width: 77%;
+    height: auto;
+    object-fit: cover;
 }
 </style>

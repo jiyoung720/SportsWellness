@@ -1,6 +1,6 @@
 <template>
-  <div class="exercisephysiology-content">
-    <h1>운동역학</h1>
+  <div class="kinetics-content">
+    <h1 class="kinetics-title">운동역학</h1>
     <img src="@/assets/images/kinetics.png" alt="kinetics"  />
   </div>
 </template>
@@ -16,26 +16,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.exercisephysiology-content {
+.kinetics-content {
     display: flex;
     flex-direction: column;
     align-items: center; /* 중앙 정렬 */
     justify-content: center;
     width: 100%;
-    height: 183vh;
-    margin-top: 28vh;
+    height: 179vh;
+    margin-top: 35vh;
 }
 
-.exercisephysiology-content h1 {
-  position: relative;
+.kinetics-title {
+  font-size: 1.7rem;
+  font-weight: 500;
   margin-bottom: 4vh;
   margin-right: 70.5%;
-  font-weight: 500;
-  font-size: 1.7rem;
   color: #3F3F3F;
 }
 img {
-  width: 76.5%;
+  width: 76.7%;
   height: auto;
   object-fit: cover; /* 이미지가 잘리지 않도록 조절 */
 }

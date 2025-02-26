@@ -1,6 +1,6 @@
 <template>
   <div class="seminar-content">
-    <h1>세미나실 & 스터디룸</h1>
+    <h1 class="seminar-title">세미나실 & 스터디룸</h1>
     <img src="@/assets/images/seminar-study.png" alt="Yongin Image"  />
     <div class="contact">
       <h3>연락처</h3>
@@ -26,16 +26,15 @@ export default {
     align-items: center; /* 중앙 정렬 */
     justify-content: center;
     width: 100%;
-    height: 85vh;
-    margin-top: 37.5vh;
+    height: 94vh;
+    margin-top: 35vh;
 }
 
-.seminar-content h1 {
-  position: relative;
+.seminar-title {
+  font-size: 1.7rem;
+  font-weight: 500;
   margin-bottom: 4vh;
   margin-right: 62%;
-  font-weight: 500;
-  font-size: 1.7rem;
   color: #3F3F3F;
 }
 
@@ -54,7 +53,7 @@ export default {
   color: #3F3F3F;
 }
 img {
-  width: 76.5%;
+  width: 76.7%;
   height: auto;
   object-fit: cover; /* 이미지가 잘리지 않도록 조절 */
 }
