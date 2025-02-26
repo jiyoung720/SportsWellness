@@ -17,13 +17,16 @@ export default {
 
 <style lang="scss" scoped>
 .kinetics-content {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center; /* 중앙 정렬 */
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
-    height: 179vh;
-    margin-top: 35vh;
+    height: auto;
+    min-height: 150vh;
+    margin-top: 45vh;
+    margin-bottom: 20vh;
 }
 
 .kinetics-title {
