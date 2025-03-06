@@ -31,7 +31,7 @@ const selectTab = (index) => {
     position: absolute;
     width: 25%; /* 네비게이션 너비 */
     height: 7%; /* 네비게이션 높이 */
-    left: 25%;
+    left: 22.5%;
     top: 34.5%; /* 오버레이 아래 위치 */
     transform: translateX(-50%);
     

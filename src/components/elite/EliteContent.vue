@@ -53,8 +53,9 @@ const pageTitle = computed(() => pageTitles[props.activeTab]);
 .content-wrapper {
     display: flex;
     gap: 2vw;
-    width: 87.5%;
+    width: 81%;
     /* max-width: 1300px; */
+    margin-left: 10vw;
 }
 
 .user-profile {

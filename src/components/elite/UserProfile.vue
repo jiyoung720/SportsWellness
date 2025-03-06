@@ -12,15 +12,15 @@
         <p class="user-info">몸무게: {{ props.weight }}kg</p>
 
         <div class="profile-buttons">
-      <!-- 버튼 클릭 시 openAddRecordModal 함수 호출 -->
-      <button class="btn-add-record" @click="openAddRecordModal">내 기록 추가 +</button>
-      <button class="btn-edit-profile">프로필 수정</button>
-      <!-- 모달 컴포넌트, showAddRecordModal 값에 따라 렌더링 -->
+        <!-- 버튼 클릭 시 openAddRecordModal 함수 호출 -->
+        <button class="btn-add-record" @click="openAddRecordModal">내 기록 추가 +</button>
+        <button class="btn-edit-profile">프로필 수정</button>
+        <!-- 모달 컴포넌트, showAddRecordModal 값에 따라 렌더링 -->
         <EliteModal v-model:show="showAddRecordModal" />
+        </div>
     </div>
-  </div>
 
-  
+
 </template>
 
 <script setup>
@@ -38,7 +38,7 @@ const showAddRecordModal = ref(false);
 
 // 내 기록 추가 버튼 클릭 시 모달 열기
 const openAddRecordModal = () => {
-  showAddRecordModal.value = true;
+    showAddRecordModal.value = true;
 };
 </script>
 
@@ -46,14 +46,14 @@ const openAddRecordModal = () => {
 .user-profile {
     position: relative;
     width: 15vw;
-    height: auto;
+    height: 50vh;
     background: #FFFFFF;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.2vw;
+    padding: 1vw;
 }
 
 .profile-image {
@@ -66,7 +66,6 @@ const openAddRecordModal = () => {
 }
 
 .user-name {
-    font-family: 'Pretendard', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
     color: #3F3F3F;
@@ -78,7 +77,7 @@ const openAddRecordModal = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0.5vw;
+    margin-top: 0.3vw;
     margin-bottom: 0.5vw;
     font-size: 1rem;
     font-weight: 600;
@@ -117,7 +116,7 @@ const openAddRecordModal = () => {
 
 /* 버튼 공통 스타일 */
 button {
-    width: 128%;
+    width: 121%;
     padding: 0.8rem;
     font-size: 0.9rem;
     font-weight: 600;
@@ -125,7 +124,7 @@ button {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin-left: -1.5rem;
+    margin-left: -1.1rem;
 }
 
 /* 내 기록 추가 버튼 */

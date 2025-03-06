@@ -13,20 +13,22 @@ import MainHeader from '@/components/layout/MainHeader.vue';
 import DetailBanner from '@/components/details/DetailBanner.vue';
 import BreadcrumbDropdown from '@/components/details/BreadcrumbDropdown.vue';
 import MainFooter from '@/components/layout/MainFooter.vue';
-import LocationPage from '@/components/details/LocationPage.vue';
+import OrganizationPage from '@/components/details/OrganizationPage.vue';
 import ExercisePhysiologyPage from '@/components/details/ExercisePhysiologyPage.vue';
 import SeminarPage from '@/components/details/SeminarPage.vue';
 import KineticsPage from '@/components/details/KineticsPage.vue';
+import LocationPage from '@/components/details/LocationPage.vue';
     export default {
         name: 'DetailPage',
         components: {
             MainHeader,
             DetailBanner,
             BreadcrumbDropdown,
-            LocationPage,
+            OrganizationPage,
             ExercisePhysiologyPage,
             SeminarPage,
             KineticsPage,
+            LocationPage,
             MainFooter,
             
         },
@@ -37,7 +39,8 @@ import KineticsPage from '@/components/details/KineticsPage.vue';
                     'location': LocationPage,
                     'exercisephysiology':ExercisePhysiologyPage,
                     'seminar' : SeminarPage,
-                    'kinetics': KineticsPage
+                    'kinetics': KineticsPage,
+                    'organization': OrganizationPage
 
                 };
                 return pageMap[this.$route.params.section] || LocationPage; // 기본값: 인사말(임시로 location)
