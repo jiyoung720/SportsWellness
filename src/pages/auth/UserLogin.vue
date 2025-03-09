@@ -14,52 +14,58 @@
       <p class="subtitle">엘리트 선수 기록 관리 시스템은 로그인 후 이용 가능합니다.</p>
 
       <form class="login-form">
-  <!-- 아이디 입력 필드 -->
-  <div class="form-group">
-    <label for="username">아이디</label>
-    <input 
-      type="text" 
-      id="username" 
-      v-model="formData.username" 
-      placeholder="아이디를 입력해주세요." 
-    />
-  </div>
+        <!-- 아이디 입력 필드 -->
+        <div class="form-group">
+          <label for="username">아이디</label>
+          <input 
+            type="text" 
+            id="username" 
+            v-model="formData.username" 
+            placeholder="아이디를 입력해주세요." 
+          />
+        </div>
 
-  <!-- 비밀번호 입력 필드 -->
-  <div class="form-group password-group">
-    <label for="password">비밀번호</label>
-    <div class="password-wrapper">
-      <input
-        :type="showPassword ? 'text' : 'password'"
-        id="password"
-        v-model="formData.password"
-        placeholder="비밀번호를 입력해주세요."
-        class="password-input"
-      />
-      <img
-        src="@/assets/images/eye.svg"
-        alt="Toggle Password Visibility"
-        class="eye-icon"
-        @click="togglePassword"
-      />
-    </div>
-  </div>
+        <!-- 비밀번호 입력 필드 -->
+        <div class="form-group password-group">
+          <label for="password">비밀번호</label>
+          <div class="password-wrapper">
+            <input
+              :type="showPassword ? 'text' : 'password'"
+              id="password"
+              v-model="formData.password"
+              placeholder="비밀번호를 입력해주세요."
+              class="password-input"
+            />
+            <img
+              src="@/assets/images/eye.svg"
+              alt="Toggle Password Visibility"
+              class="eye-icon"
+              @click="togglePassword"
+            />
+          </div>
+        </div>
 
-  <!-- 로그인 유지 체크박스 -->
-  <div class="checkbox-group">
-    <input type="checkbox" id="rememberMe" v-model="formData.rememberMe" />
-    <label for="rememberMe">로그인 유지</label>
-  </div>
+        <!-- 로그인 유지 체크박스 -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="rememberMe" v-model="formData.rememberMe" />
+          <label for="rememberMe">로그인 유지</label>
+        </div>
 
-  <!-- 로그인 버튼 -->
-  <button type="submit" class="login-btn">로그인</button>
-</form>
+        <!-- 로그인 버튼 -->
+        <button type="submit" class="login-btn">로그인</button>
+      </form>
 
       <!-- 또는 구분선 -->
       <div class="divider"><span>또는</span></div>
 
+      <!-- 회원가입 하러가기 버튼 -->
       <div class="register-link">
         <span @click="goToRegister">회원가입 하러가기</span>
+      </div>
+
+      <!-- 비밀번호 찾기(변경) 텍스트 -->
+      <div class="reset-password-text">
+        <span @click="goToResetPassword">비밀번호 찾기(변경)</span>
       </div>
     </div>
 
@@ -90,6 +96,9 @@ export default {
   methods: {
     goToRegister() {
       this.$router.push("/register");
+    },
+    goToResetPassword() {
+      this.$router.push("/reset-password"); // 비밀번호 찾기(변경) 페이지로 이동
     },
     togglePassword() {
       this.showPassword = !this.showPassword;
@@ -143,10 +152,6 @@ export default {
   background: rgba(0, 0, 0, 0.5); /* 반투명 검은색 */
 }
 
-
-
-
-
 /* 로그인 박스 */
 .login-box {
   position: absolute;
@@ -196,7 +201,6 @@ export default {
   }
 }
 
-
 /* 로그인 폼 */
 .login-form {
   display: flex;
@@ -210,12 +214,12 @@ export default {
 /* 로그인 버튼 */
 .login-btn {
   width: 100%;
-  max-width: 4px; /* 최대 너비 설정 */
+  max-width: 400px;
   padding: 12px;
   border-radius: 8px; /* 둥근 모서리 */
   border: 2px solid #e6e6e6; /* 테두리 색상 */
   background: #e6e6e6; /* 배경색 */
-  font-size: 50px;
+  font-size: 20px;
   font-weight: 600;
   color: #737373; /* 글자 색상 */
   cursor: pointer;
@@ -228,7 +232,6 @@ export default {
   background: #d4d4d4; /* 마우스 호버 시 버튼 색상 변경 */
 }
 
-
 /* 안내 문구 스타일 */
 .subtitle {
   color: var(--Gr-02, #737373);
@@ -240,7 +243,6 @@ export default {
   text-align: center; /* 중앙 정렬 */
   margin-bottom: 1.5rem; /* 입력 필드와 간격 조정 */
 }
-
 
 /* 입력 폼 그룹 */
 .form-group {
@@ -314,34 +316,8 @@ export default {
   width: 100%;
   font-size: 1rem;
   color: #3f3f3f;
-
-margin-top: -20px;
+  margin-top: -20px;
 }
-
-
-
-/* 로그인 버튼 */
-.login-btn {
-  width: 100%;
-  max-width: 400px;
-  padding: 12px;
-  background: #e6e6e6;
-  border: 2px solid #e6e6e6;
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #737373;
-  cursor: pointer;
-  transition: 0.3s;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.login-btn:hover {
-  background: #d4d4d4;
-}
-
-
 
 /* "또는" 구분선 */
 .divider {
@@ -374,9 +350,7 @@ margin-top: -20px;
   background: #fff;
 }
 
-
-
-/* 회원가입 버튼 */
+/* 회원가입 하러가기 버튼 */
 .register-link {
   display: flex;
   justify-content: center;
@@ -387,26 +361,41 @@ margin-top: -20px;
   border-radius: 8px;
   border: 2px solid var(--main01, #005871);
   background: #FFF;
-  
-  /* 주어진 스타일 적용 */
   color: var(--main01, #005871);
   text-align: center;
   font-family: KoPubWorldDotum;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 30px */
-
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   margin-top: 10px;
 }
 
-/* 호버 효과 */
+/* 회원가입 하러가기 버튼 호버 효과 */
 .register-link:hover {
   background: #f0f0f0;
 }
 
+/* 비밀번호 찾기(변경) 텍스트 */
+.reset-password-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #737373; /* 회색 텍스트 */
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
 
+/* 비밀번호 찾기(변경) 텍스트 호버 효과 */
+.reset-password-text:hover {
+  color: #005871; /* 호버 시 색상 변경 */
+}
 </style>

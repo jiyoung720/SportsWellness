@@ -29,46 +29,46 @@
       </div>
 
       <form @submit.prevent="handleRegister" class="register-form">
-        <!-- 아이디 입력 + 중복 확인 버튼 -->
-        <div class="form-group username-group">
-          <label for="username">아이디</label>
-          <div class="input-group">
-            <input
-              id="username"
-              type="text"
-              v-model="formData.username"
-              placeholder="아이디를 입력해주세요."
-              required
-            />
-            <button type="button" class="check-btn" @click="checkUsernameAvailability">
-              중복 확인
-            </button>
-          </div>
+
+      <!-- 이메일 입력 + 인증번호 받기 버튼 -->
+  <div class="form-group email-group">
+    <label for="email">이메일</label>
+    <div class="input-group">
+      <input
+        id="email"
+        type="email"
+        v-model="formData.email"
+        placeholder="이메일을 입력해주세요."
+        required
+        class="email-input"
+      />
+      <button type="button" class="check-btn" @click="checkEmailAvailability">
+        인증번호 받기
+      </button>
+    </div>
+  </div>
+        <!-- 비밀번호 입력 -->
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input
+            id="password"
+            type="password"
+            v-model="formData.password"
+            placeholder="비밀번호를 입력해주세요."
+            required
+          />
         </div>
 
-    <!-- 비밀번호 입력 -->
-<div class="form-group">
-  <label for="password">비밀번호</label>
-  <input
-    id="password"
-    type="password"
-    v-model="formData.password"
-    placeholder="비밀번호를 입력해주세요."
-    required
-  />
-</div>
-
-<!-- 비밀번호 확인 (라벨 제거하고, placeholder로 표시) -->
-<div class="form-group">
-  <input
-    id="passwordConfirm"
-    type="password"
-    v-model="formData.passwordConfirm"
-    placeholder="비밀번호 확인"
-    required
-  />
-</div>
-
+        <!-- 비밀번호 확인 (라벨 제거하고, placeholder로 표시) -->
+        <div class="form-group">
+          <input
+            id="passwordConfirm"
+            type="password"
+            v-model="formData.passwordConfirm"
+            placeholder="비밀번호 확인"
+            required
+          />
+        </div>
 
         <!-- 이름 입력 -->
         <div class="form-group">
@@ -94,16 +94,20 @@
           />
         </div>
 
-        <!-- 이메일 입력 -->
-        <div class="form-group">
-          <label for="email">이메일</label>
-          <input
-            id="email"
-            type="email"
-            v-model="formData.email"
-            placeholder="이메일을 입력해주세요."
+        <!-- 관리자 선택 시 종목 입력 필드 추가 -->
+        <div class="form-group" v-if="userRole === 'admin'">
+          <label for="sport">종목</label>
+          <select
+            id="sport"
+            v-model="formData.sport"
             required
-          />
+            class="sport-select"
+          >
+            <option value="" disabled selected>종목을 선택해주세요.</option>
+            <option v-for="sport in sports" :key="sport" :value="sport">
+              {{ sport }}
+            </option>
+          </select>
         </div>
 
         <!-- 개인정보 동의 체크박스 -->
@@ -128,7 +132,6 @@
 </template>
 
 
-
 <script>
 import MainHeader from "@/components/layout/MainHeader.vue";
 import MainFooter from "@/components/layout/MainFooter.vue";
@@ -141,15 +144,16 @@ export default {
   data() {
     return {
       formData: {
-        username: "",
+        email: "",
         password: "",
         passwordConfirm: "",
         name: "",
         phone: "",
-        email: "",
         agree: false,
+        sport: "", // 관리자용 종목 입력 필드
       },
       userRole: null, // 'student' 또는 'admin' 저장
+      sports: ["축구", "유도", "태권도"], // 선택 가능한 종목 리스트
     };
   },
   methods: {
@@ -161,10 +165,13 @@ export default {
     },
     selectRole(role) {
       this.userRole = role;
+      if (role === "student") {
+        this.formData.sport = ""; // 학생 선택 시 종목 필드 초기화
+      }
     },
-    checkUsernameAvailability() {
-      console.log("아이디 중복 확인 실행:", this.formData.username);
-      alert("아이디 중복 확인 기능입니다.");
+    checkEmailAvailability() {
+      console.log("이메일 중복 확인 실행:", this.formData.email);
+      alert("이메일 중복 확인 기능입니다.");
     },
   },
 };
@@ -177,13 +184,12 @@ export default {
 .register-container {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 세로 중앙 정렬 */
-  align-items: center; /* 가로 중앙 정렬 */
+  justify-content: center;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
   background: white;
   position: relative;
-  
 }
 
 /* 배경 컨테이너 */
@@ -195,7 +201,7 @@ export default {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: var(--BK, #262626); /* 기본 배경 */
+  background: var(--BK, #262626);
 }
 
 /* 배경 이미지 */
@@ -204,7 +210,7 @@ export default {
   height: 100%;
   object-fit: cover;
   filter: blur(7px);
-  opacity: 0.8; /* 기본 투명도 적용 */
+  opacity: 0.8;
 }
 
 /* 어두운 오버레이 추가 */
@@ -215,19 +221,15 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* 반투명 검은색 */
+  background: rgba(0, 0, 0, 0.5);
 }
-
-
-
 
 /* 회원가입 박스 */
 .register-box {
   position: absolute;
-  top: 10%; /* 중앙이 아니라 위쪽 정렬 */
+  top: 10%;
   left: 50%;
-  transform: translateX(-50%); /* 가로만 중앙 정렬 */
-
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -237,31 +239,73 @@ export default {
   background: white;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-
-  /* 크기 조정 */
   width: 60%;
   max-width: 1190px;
   min-width: 320px;
   height: auto;
   min-height: 400px;
-  max-height: none; /* 제한 없이 확장 가능하도록 설정 */
+  max-height: none;
 }
 
-/* 스크롤 가능하게 조정 */
-.register-container {
+/* 이메일 입력 그룹 스타일 */
+.email-group .input-group {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+
+  gap: 10px; /* 요소 사이 간격 */
   width: 100%;
-  min-height: 100vh; /* 기본적으로 화면 전체를 덮도록 설정 */
-  background: white;
-  position: relative;
-  overflow-y: auto; /* 스크롤 가능하게 설정 */
+  max-width: 400px;
 }
 
+/* 이메일 입력 필드 스타일 */
+.email-input {
+  flex: 1; /* 남은 공간을 모두 차지 */
+  padding: 12px 24px;
+  border: 2px solid #737373;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: left;
+  box-sizing: border-box; /* padding과 border를 높이에 포함 */
+  height: 48px; /* 높이 고정 */
+  line-height: 24px; /* 텍스트 수직 중앙 정렬 */
 
+}
 
+/* 인증번호 받기 버튼 스타일 */
+.check-btn {
+  padding: 12px 24px; /* 버튼 크기 조정 */
+  font-size: 14px;
+  border: 2px solid #737373; /* 평소 색상: 회색 */
+  border-radius: 6px;
+  background: white;
+  color: #737373; /* 평소 색상: 회색 */
+  cursor: pointer;
+  transition: all 0.3s ease; /* 색상 변경 애니메이션 */
+  height: 48px; /* 높이 고정 */
+  line-height: 24px; /* 텍스트 수직 중앙 정렬 */
+  white-space: nowrap; /* 버튼 텍스트 줄바꿈 방지 */
+  box-sizing: border-box; /* padding과 border를 높이에 포함 */
+  display: flex;
+  align-items: center; /* 텍스트를 버튼 내부에서 수직 중앙 정렬 */
+  justify-content: center; /* 텍스트를 버튼 내부에서 수평 중앙 정렬 */
+  
+}
 
+/* 버튼 호버 및 클릭 시 색상 변경 */
+.check-btn:hover,
+.check-btn:active {
+  border-color: #005871; /* 파란색 */
+  background: #005871; /* 파란색 */
+  color: white; /* 흰색 */
+}
+
+.email-input,
+.check-btn {
+  height: 48px; /* 높이 동일하게 설정 */
+  line-height: 24px; /* 텍스트 수직 중앙 정렬 */
+  box-sizing: border-box; /* padding과 border를 높이에 포함 */
+  padding: 12px 24px; /* 패딩 동일하게 설정 */
+  box-sizing: border-box;
+}
 
 /* 입력 폼 */
 .register-form {
@@ -288,13 +332,14 @@ export default {
   font-size: 1rem;
   font-weight: 600;
   color: #3f3f3f;
-  margin-bottom: 100px;
+  margin-bottom: 8px;
   text-align: left;
   width: 100%;
 }
 
 /* 입력 필드 */
-.form-group input {
+.form-group input,
+.sport-select {
   width: 100%;
   padding: 12px 24px;
   border: 2px solid #737373;
@@ -302,7 +347,24 @@ export default {
   font-size: 1rem;
   text-align: left;
   box-sizing: border-box;
-  margin-top: -5px;
+  background-color: white;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* 드롭다운 화살표 커스텀 */
+.sport-select {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23737373%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+}
+
+/* 드롭다운 호버 및 포커스 스타일 */
+.sport-select:hover,
+.sport-select:focus {
+  border-color: #005871;
+  outline: none;
 }
 
 /* 학생 / 관리자 선택 버튼 */
@@ -335,40 +397,6 @@ export default {
   border-radius: 8px;
   border: 2px solid var(--BK, #262626);
   background: var(--BK, #262626);
-  color: white;
-}
-
-
-
-
-/* 아이디 입력 + 중복 확인 버튼 */
-.username-group .input-group {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-  max-width: 400px;
-}
-
-/* 입력 필드 */
-.input-group input {
-  flex: 1;
-  width: 100%;
-}
-
-/* 중복 확인 버튼 */
-.check-btn {
-  padding: 10px;
-  font-size: 14px;
-  border: 2px solid #005871;
-  border-radius: 6px;
-  background: white;
-  color: #005871;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.check-btn:hover {
-  background: #005871;
   color: white;
 }
 
@@ -430,9 +458,6 @@ export default {
   margin-bottom: 15px; /* 이메일 필드 아래 여백 */
 }
 
-
-
-
 /* 개인정보 동의 체크박스 */
 .checkbox-group {
   display: flex;
@@ -476,7 +501,6 @@ export default {
 .register-btn {
   margin-top: 30px; /* 개인정보 동의 체크박스와 가입하기 버튼 사이 간격 */
 }
-
 
 /* 가입 버튼 (로그인 버튼과 동일한 크기 적용) */
 .register-btn {
@@ -526,6 +550,7 @@ export default {
   padding: 0 10px;
   background: #fff;
 }
+
 
 /* 로그인 링크 (회원가입 박스 오른쪽 상단 배치) */
 .login-link {
