@@ -28,6 +28,18 @@ const routes = [
         name: 'DetailPage',
         component: () => import('@/pages/DetailPage.vue'),
     },
+    // 비밀번호 재설정 페이지 추가
+    {
+        path: '/reset-password', // 경로 설정
+        name: 'UserResetPassword', // 라우트 이름
+        component: () => import('@/pages/auth/UserResetPassword.vue'), // 컴포넌트 경로
+    },
+    // 프로필 작성 페이지 추가
+    {
+        path: '/profile', // 경로 설정
+        name: 'UserProfile', // 라우트 이름
+        component: () => import('@/pages/UserProfile.vue'), // 컴포넌트 경로
+    },
 ];
 
 const router = createRouter({
