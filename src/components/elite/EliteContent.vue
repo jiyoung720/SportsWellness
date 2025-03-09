@@ -3,10 +3,10 @@
         <div class="content-wrapper">
 
             <UserProfile 
-                userName="홍길동 (남자)"
+                userName="김태훈 (남자)"
                 sport="축구"
-                height="180"
-                weight="80" 
+                height="178"
+                weight="72" 
             />
 
             <div class="main-section">
@@ -36,8 +36,8 @@ const props = defineProps({
 });
 
 const pageTitles = ['체력측정분석', '경기기록'];
-
 const pageTitle = computed(() => pageTitles[props.activeTab]);
+
 </script>
 
 <style scoped>

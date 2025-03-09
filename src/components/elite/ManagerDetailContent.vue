@@ -1,16 +1,23 @@
 <template>
-    <div class="elite-content">
+    <div class="elite-detail-content">
         <div class="content-wrapper">
+
+            <UserProfile 
+                userName="홍길동 (남자)"
+                sport="축구"
+                height="180"
+                weight="80" 
+            />
+
             <div class="main-section">
                 <div class="main-title">
                     <h2>{{ pageTitle }}</h2>
                 </div>
 
                 <div class="main-content">
+                    <button @click="$emit('go-back')" class="back-button">목록으로 돌아가기</button>
                     <div class="content-area">
-                        <PlayerPerformanceList v-if="activeTab === 0" />
-                        <PlayerRecordList v-else-if="activeTab === 1" @select-record="handleRecordClick" />
-                        <p v-else>현재 입력된 기록이 없습니다. 내 기록 추가를 통해 몸 상태를 기록해 보세요!</p>
+                        <MatchRecordList :recordId="recordId" />
                     </div>
                 </div>
             </div>
@@ -19,28 +26,32 @@
 </template>
 
 <script setup>
-import { computed, defineProps } from 'vue';
-import { useRouter } from 'vue-router';
-import PlayerRecordList from './PlayerRecordList.vue';
-import PlayerPerformanceList from './PlayerPerformanceList.vue';
+import { computed, defineProps} from 'vue';
+// import { useRoute, useRouter } from 'vue-router';
+import UserProfile from './UserProfile.vue';
+import MatchRecordList from './MatchRecordList.vue';
 
-const router = useRouter();
+// const route = useRoute();
+// const router = useRouter();
+// const recordId = route.params.section; URL에서 ID 가져오기
+
+// 뒤로 가기 함수
+// const goBack = () => {
+//     router.push('/elite-manager');
+// };
+
 const props = defineProps({
     activeTab: Number,
+    recordId: Number, // ✅ 부모에서 받은 recordId
 });
 
 const pageTitles = ['체력측정분석', '경기기록'];
 const pageTitle = computed(() => pageTitles[props.activeTab]);
 
-// ✅ 리스트에서 클릭된 항목을 받아서 상세 페이지로 이동
-const handleRecordClick = (recordId) => {
-    router.push(`/detail/${recordId}`);
-};
-
 </script>
 
 <style scoped>
-.elite-content {
+.elite-detail-content {
     /* position: absolute; */
     width: 100%;
     height: 160vh;
@@ -57,7 +68,14 @@ const handleRecordClick = (recordId) => {
     display: flex;
     gap: 2vw;
     width: 81%;
+    /* max-width: 1300px; */
     margin-left: 10vw;
+}
+
+.user-profile {
+    flex: 0 0 10vw; /* 고정된 너비 */
+    margin-top: 47vh; /* 화면 높이의 18%만큼 아래로 이동 */
+    max-height: 280px;
 }
 
 /* 세로 정렬: 타이틀과 컨텐츠 */
