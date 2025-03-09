@@ -12,6 +12,11 @@ const routes = [
         component: () => import('@/pages/ElitePlayerPage.vue'),
     },
     {
+        path: '/elite-manager',
+        name: 'EliteManagerPage',
+        component: () => import('@/pages/EliteManagerPage.vue'),
+    },
+    {
         path: '/login',
         name: 'UserLogin',
         component: () => import('@/pages/auth/UserLogin.vue'),

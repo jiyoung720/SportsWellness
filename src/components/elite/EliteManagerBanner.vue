@@ -39,7 +39,7 @@ import TabNavigation from './TabNavigation.vue';
     left: 0;
     top: 0;
     /* top: 9.7%; header 높이 9.7% 바로 아래에서 시작 */
-    background: rgba(89, 58, 47, 0.9); /* #593A2F + opacity 0.9 */
+    background: rgba(104, 90, 143, 0.9); /* #593A2F + opacity 0.9 */
     border-radius: 0px 0px 40px 40px;
     z-index: 2; /* 배경 이미지 위에 배치 */
 }

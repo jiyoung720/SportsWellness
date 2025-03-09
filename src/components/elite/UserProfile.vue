@@ -13,8 +13,8 @@
 
         <div class="profile-buttons">
         <!-- 버튼 클릭 시 openAddRecordModal 함수 호출 -->
-        <button class="btn-add-record" @click="openAddRecordModal">내 기록 추가 +</button>
         <button class="btn-edit-profile">프로필 수정</button>
+        <button class="btn-add-record" @click="openAddRecordModal">경기 기록 추가 +</button>
         <!-- 모달 컴포넌트, showAddRecordModal 값에 따라 렌더링 -->
         <EliteModal v-model:show="showAddRecordModal" />
         </div>
@@ -109,17 +109,16 @@ const openAddRecordModal = () => {
 .profile-buttons {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-top: 3rem;
+    gap: 0.6rem;
+    margin-top: 2rem;
     width: 100%;
 }
 
 /* 버튼 공통 스타일 */
 button {
     width: 121%;
-    padding: 0.8rem;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
     border: none;
     border-radius: 8px;
@@ -127,16 +126,18 @@ button {
     margin-left: -1.1rem;
 }
 
-/* 내 기록 추가 버튼 */
-.btn-add-record {
-    background-color: #005871;
-    color: white;
-}
-
 /* 프로필 수정 버튼 */
 .btn-edit-profile {
     background-color: #C9C9C9;
     color: #6B6B6B;
-    padding: 0.5rem;
+    padding: 0.7rem;
 }
+
+/* 내 기록 추가 버튼 */
+.btn-add-record {
+    background-color: #005871;
+    color: white;
+    padding: 1rem;
+}
+
 </style>

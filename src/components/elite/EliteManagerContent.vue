@@ -27,17 +27,17 @@
 </template>
 
 <script setup>
-import { computed, defineProps } from 'vue';
+import { computed, defineProps} from 'vue';
 import UserProfile from './UserProfile.vue';
 import MatchRecordList from './MatchRecordList.vue';
 
 const props = defineProps({
-  activeTab: Number, // 부모(App.vue)에서 내려받는 activeTab 값
+    activeTab: Number,
 });
 
 const pageTitles = ['체력측정분석', '경기기록'];
-
 const pageTitle = computed(() => pageTitles[props.activeTab]);
+
 </script>
 
 <style scoped>
@@ -92,6 +92,7 @@ const pageTitle = computed(() => pageTitles[props.activeTab]);
     margin-bottom: 10px;
     color: #3f3f3f;
 }
+
 /* 글자 길이에 맞는 굵은 밑줄 */
 .main-title h2::after {
     content: "";
@@ -126,4 +127,3 @@ const pageTitle = computed(() => pageTitles[props.activeTab]);
     border-radius: 8px;
 }
 </style>
-
