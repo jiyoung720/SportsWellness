@@ -5,12 +5,21 @@
         </div>
         <div class="overlay"></div>
         <div class="overlay-text">
-            <h1>스포츠 웰니스 소개</h1>
+            <h1>{{ selectedMainMenu }}</h1>
         </div>
     </div>
 </template>
 
-<script setup>
+<script>
+
+export default {
+    props: {
+        selectedMainMenu: {
+            type: String,
+            required: true
+        }
+    }
+};
 
 </script>
 

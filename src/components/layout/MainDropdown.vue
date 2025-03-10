@@ -1,10 +1,10 @@
 <template>
     <li class="dropdown">
-        <a @click="$emit('navigate', '/')">{{ title }}</a>
+        <a @click="$emit('navigate', title, '/')">{{ title }}</a>
 
         <div class="dropdown-content">
             <ul>
-                <li v-for="(item, index) in items" :key="index" @click="$emit('navigate', item.path)">
+                <li v-for="(item, index) in items" :key="index" @click="$emit('navigate', title, item.path)">
                     {{ item.title }}
                     <div v-if="index !== items.length - 1" class="divider"></div>
                 </li>
@@ -16,8 +16,8 @@
 <script>
 export default {
     props: {
-        title: String,
-        items: Array,
+        title: String, // 드롭다운 제목 (메인 카테고리)
+        items: Array,  // 드롭다운 내부 항목들
     },    
 };
 </script>

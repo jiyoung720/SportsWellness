@@ -21,19 +21,23 @@ import MainDropdown from './MainDropdown.vue';
 
 export default {
     components: { MainDropdown },
-    setup() {
-        const router = useRouter();  // setup에서 useRouter() 호출
-        const isLoggedIn = ref(true);  // 로그인 상태 관리
+    setup(_, { emit }) {
+        const router = useRouter();
+        const isLoggedIn = ref(true);
+        const selectedMainMenu = ref("스포츠ㆍ웰니스연구센터 소개"); // 기본값 설정
 
-        // 로고 클릭 시 메인 페이지로 이동
         const goToHome = () => {
             router.push('/');
+            selectedMainMenu.value = "스포츠ㆍ웰니스연구센터 소개"; // 홈 클릭 시 기본값으로 변경
+            emit('update:selectedMainMenu', selectedMainMenu.value);
         };
 
         // 드롭다운 항목 클릭 시 페이지 이동
-        const navigateToPage = (path) => {
+        const navigateToPage = (title, path) => {
             if (path) {
-                router.push(path); 
+                router.push(path); // 페이지 이동
+                selectedMainMenu.value = title; // 선택된 메뉴 업데이트
+                emit("update:selectedMainMenu", selectedMainMenu.value); // 부모 컴포넌트로 전달
             }
         };
 
