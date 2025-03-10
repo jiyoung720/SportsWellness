@@ -7,7 +7,7 @@
                     <th>대회명</th>
                     <th>상대</th>
                     <th>승패</th>
-                    <th>기타사항</th>
+                    <th>경기 기록</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +43,6 @@ const sortByDateDesc = (records) => {
 };
 
 const matchRecords = ref([
-    { date: '2024.05.10', tournament: 'U리그', opponent: '성균관대학교', result: '패', year: '2024', notes: '주전 3명 부상, 0-2 패배' },
     { date: '2024.05.02', tournament: 'U리그', opponent: '경희대학교', result: '승', year: '2024', notes: '리그 1위 수성, 3-0 완승' },
     { date: '2024.04.15', tournament: '전국 대학축구 선수권 대회', opponent: '단국대학교', result: '무', year: '2024', notes: '8강전, 승부차기 패배 (3-4)' },
     { date: '2024.04.05', tournament: '전국 대학축구 선수권 대회', opponent: '울산대학교', result: '승', year: '2024', notes: '16강전, 연장전 3-2 승리' },

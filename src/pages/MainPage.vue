@@ -3,6 +3,7 @@
     <MainHeader />
     <MainBanner />
     <MainContent   />
+    <MainPopup />
     <MainFooter />
     
   </div>
@@ -12,6 +13,7 @@
 import MainHeader from '../components/layout/MainHeader.vue'
 import MainBanner from '../components/main/MainBanner.vue'
 import MainContent from '../components/main/MainContent.vue'
+import MainPopup from '../components/main/MainPopup.vue'
 import MainFooter from '../components/layout/MainFooter.vue';
 
 export default {
@@ -20,6 +22,7 @@ export default {
     MainHeader,
     MainBanner,
     MainContent,
+    MainPopup,
     MainFooter
   }
 }

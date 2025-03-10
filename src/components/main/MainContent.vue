@@ -9,9 +9,9 @@
   </div>
 
 <div class="pictures">
-    <img src="@/assets/images/picture1.png" alt="Yongin Image" class="mainPicture" />
-    <img src="@/assets/images/picture2.png" alt="Yongin Image" class="mainPicture" />
-    <img src="@/assets/images/picture3.png" alt="Yongin Image" class="mainPicture" />
+    <img src="@/assets/images/mainimage1.png" alt="Yongin Image" class="mainPicture" />
+    <img src="@/assets/images/mainimage2.png" alt="Yongin Image" class="mainPicture" />
+    <img src="@/assets/images/mainimage3.png" alt="Yongin Image" class="mainPicture" />
   <div class="pictures_menu">
     <a class="pictures_menu1">경기력 향상</a>
     <a class="pictures_menu2">개인의 체력</a>
@@ -44,7 +44,7 @@ export default {
   transform: translate(0,-25%);
 }
 .health{
-  transform:translate(0,285%) ;
+  transform:translate(0,286%) ;
 }
 
 .content{
@@ -71,6 +71,11 @@ export default {
   justify-content: center;
   margin-bottom: 20vh;
   gap: 30px;
+}
+
+.mainPicture {
+  width: 30%; /* 원하는 크기로 설정 */
+  height: auto; /* 비율 유지 */
 }
 
 .pictures_menu{
