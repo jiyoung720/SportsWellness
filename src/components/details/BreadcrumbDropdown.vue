@@ -11,7 +11,7 @@
         <!-- 첫 번째 드롭다운 -->
         <div class="dropdown">
             <button class="dropdown-btn1" @click="toggleDropdown('main')">
-                <span class="active-main-text">{{ selectedMainMenu }}</span>
+                <span class="active-main-text">{{ selectedMainMenu.title }}</span>
                 <span :class="{ 'rotate-180': dropdowns.main }">
                     <img src="@/assets/images/arrow.png" alt="arrow" class="dropdown-arrow" />
                 </span>
@@ -26,14 +26,14 @@
         <!-- 두 번째 드롭다운 -->
         <div class="dropdown">
             <button class="dropdown-btn2" @click="toggleDropdown('sub')">
-                <span class="active-text">{{ selectedSubMenu }}</span>
+                <span class="active-text">{{ selectedSubMenu.title }}</span>
                 <span :class="{ 'rotate-180': dropdowns.sub }">
                     <img src="@/assets/images/arrow.png" alt="arrow" class="dropdown-arrow" />
                 </span>
             </button>
             <ul v-if="dropdowns.sub" class="dropdown-menu">
-                <li v-for="item in currentSubMenuOptions" :key="item" @click="selectSubMenu(item)">
-                    {{ item }}
+                <li v-for="item in currentSubMenuOptions" :key="item.title" @click="selectSubMenu(item)">
+                    {{ item.title }}
                 </li>
             </ul>
         </div>
@@ -44,29 +44,56 @@
 export default {
     data() {
         return {
-            dropdowns: {
-                main: false,
-                sub: false,
-            },
-            selectedMainMenu: '스포츠·웰니스연구센터 소개',
-            selectedSubMenu: '인사말',
+            dropdowns: {main: false, sub: false,}, // 드롭다운 메뉴 토글 상태
 
-            // 첫 번째 드롭다운 항목별 두 번째 드롭다운 옵션들
+            selectedMainMenu: { title: '스포츠·웰니스연구센터 소개' },
+            selectedSubMenu: { title: '인사말', path: '/' },
+
+            // 메뉴와 해당 페이지 경로 매핑
             subMenuOptions: {
-                '스포츠·웰니스연구센터 소개': ['인사말', '주요사업', '기관연혁', '조직도 위원회', '위치 및 연락처'],
-                '스포츠·웰니스연구센터 연구실': ['운동생리학 & 생화학', '운동 역학', '세미나실 & 스터디룸'],
+                '스포츠·웰니스연구센터 소개': [
+                    { title: '인사말', path: '/' },
+                    { title: '주요사업', path: '/' },
+                    { title: '기관연혁', path: '/' },
+                    { title: '조직도 위원회', path: '/detail/organization' },
+                    { title: '위치 및 연락처', path: '/detail/location' },
+                ],
+                '스포츠·웰니스연구센터 연구실': [
+                    { title: '운동생리학 & 생화학', path: '/detail/exercisephysiology' },
+                    { title: '운동 역학', path: '/detail/kinetics' },
+                    { title: '세미나실 & 스터디룸', path: '/detail/seminar' },
+                ],
                 '국민체력100': [],
-                '엘리트 선수 기록 관리 시스템': ['체력 측정분석', '경기 기록',],
+                '엘리트 선수 기록 관리 시스템': [
+                    { title: '체력 측정분석', path: '/elite-player' },
+                    { title: '경기 기록', path: '/elite-manager' },
+                ],
             },
 
             // 현재 선택된 첫 번째 드롭다운의 두 번째 드롭다운 항목들
             currentSubMenuOptions: [],
+            pathToMenuMap: {}, // 경로와 메뉴 매핑
         };
     },
+
     created() {
-        this.currentSubMenuOptions = this.subMenuOptions[this.selectedMainMenu]; // 초기 설정
-        this.selectedSubMenu = this.currentSubMenuOptions[0]; // 기본값 설정
+        // 경로별 매핑 객체 초기화
+        this.generatePathToMenuMap();
+        this.updateBreadcrumbFromRoute();
     },
+
+    watch: {
+        // 라우트 변경 감지 -> 브레드크럼 업데이트
+        '$route.path'() {
+            this.updateBreadcrumbFromRoute();
+        },
+    },
+
+    // created() {
+    //     this.currentSubMenuOptions = this.subMenuOptions[this.selectedMainMenu.title] || [];
+    //     this.selectedSubMenu = this.currentSubMenuOptions.length > 0 ? this.currentSubMenuOptions[0] : {};
+    // },
+    
     methods: {
         goHome() {
             this.$router.push('/');
@@ -75,14 +102,40 @@ export default {
             this.dropdowns[menu] = !this.dropdowns[menu];
         },
         selectMenu(menu) {
-            this.selectedMainMenu = menu;
-            this.currentSubMenuOptions = this.subMenuOptions[menu]; // 두 번째 드롭다운 항목 변경
-            this.selectedSubMenu = this.currentSubMenuOptions[0]; // 첫 번째 항목 기본 선택
+            this.selectedMainMenu = { title: menu }; // 첫 번째 드롭다운 항목 변경
+            this.currentSubMenuOptions = this.subMenuOptions[menu] || []; // 두 번째 드롭다운 항목 변경
+            this.selectedSubMenu = this.currentSubMenuOptions.length > 0 ? this.currentSubMenuOptions[0] : {}; // 두 번째 드롭다운 첫 번째 항목 선택
             this.toggleDropdown('main');
+
+            if (this.currentSubMenuOptions.length === 0) {
+                this.$router.push('/');
+            }
         },
         selectSubMenu(menu) {
             this.selectedSubMenu = menu;
             this.toggleDropdown('sub');
+
+            // 두 번째 드롭다운에서 선택한 항목에 따라 페이지 이동
+            if (menu.path) {
+                this.$router.push(menu.path);
+            }
+        },
+        generatePathToMenuMap() {
+            for (const mainMenu in this.subMenuOptions) {
+                this.subMenuOptions[mainMenu].forEach(subMenu => {
+                    this.pathToMenuMap[subMenu.path] = { main: mainMenu, sub: subMenu };
+                });
+            }
+        },
+        updateBreadcrumbFromRoute() {
+            const currentPath = this.$route.path;
+            const matchedMenu = this.pathToMenuMap[currentPath];
+
+            if (matchedMenu) {
+                this.selectedMainMenu = { title: matchedMenu.main };
+                this.currentSubMenuOptions = this.subMenuOptions[matchedMenu.main];
+                this.selectedSubMenu = matchedMenu.sub;
+            }
         },
     },
 };
