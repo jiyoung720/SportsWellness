@@ -5,10 +5,10 @@
         </div>
         <nav>
             <ul>
-                <MainDropdown title="스포츠ㆍ웰니스연구센터 소개" :items="labIntroItems" :navigateToPage="navigateToPage" />
-                <MainDropdown title="스포츠ㆍ웰니스연구센터 연구실" :items="labEquipmentItems" :navigateToPage="navigateToPage" />
-                <MainDropdown title="국민체력100" :items="fitnessItems" :navigateToPage="navigateToPage" />
-                <MainDropdown title="엘리트 선수 관리 시스템" :items="eliteItems" :navigateToPage="navigateToPage" />
+                <MainDropdown title="스포츠ㆍ웰니스연구센터 소개" :items="labIntroItems" @navigate="navigateToPage" />
+                <MainDropdown title="스포츠ㆍ웰니스연구센터 연구실" :items="labEquipmentItems" @navigate="navigateToPage" />
+                <MainDropdown title="국민체력100" :items="fitnessItems" @navigate="navigateToPage" />
+                <MainDropdown title="엘리트 선수 관리 시스템" :items="eliteItems" @navigate="navigateToPage" />
             </ul>
         </nav>
     </header>
@@ -30,38 +30,34 @@ export default {
             router.push('/');
         };
 
-        // 드롭다운 아이템 클릭 시 호출되는 메소드
-        const navigateToPage = (item) => {
-            console.log(item);
-
-            if (isLoggedIn.value) {
-                // 로그인 상태에 따라 다르게 처리 (나중에 로그인 기능 구현 시 변경 필요)
-                router.push(`/elite-player`);  // 임시로 /elite-player 페이지로 이동
-            } else {
-                router.push('/login');  // 로그인 안 되어 있으면 로그인 페이지로 이동
+        // 드롭다운 항목 클릭 시 페이지 이동
+        const navigateToPage = (path) => {
+            if (path) {
+                router.push(path); 
             }
         };
 
         return {
             goToHome, // 메인 페이지 이동 함수
+            navigateToPage,
+
             labIntroItems: [
-                '인사말',
-                '주요 사업',
-                '기관 연혁',
-                '조직도 위원회',
-                '위치 및 연락처',
+                { title: '인사말', path: '/' },
+                { title: '주요 사업', path: '/' },
+                { title: '기관 연혁', path: '/' },
+                { title: '조직도 위원회', path: '/detail/organization' },
+                { title: '위치 및 연락처', path: '/detail/location' },
             ],
             labEquipmentItems: [
-                '운동생리학 & 생화학',
-                '운동 역학',
-                '세미나실 & 스터디룸',
+                { title: '운동생리학 & 생화학', path: '/detail/exercisephysiology' },
+                { title: '운동 역학', path: '/detail/kinetics' },
+                { title: '세미나실 & 스터디룸', path: '/detail/seminar' },
             ],
             eliteItems: [
-                '체력 측정분석',
-                '경기 기록',
+                { title: '체력 측정분석', path: '/elite-player' },
+                { title: '경기 기록', path: '/elite-manager' },
             ],
             isLoggedIn,  // 로그인 상태
-            navigateToPage,  // 메소드 반환
         };
     },
 }
@@ -85,7 +81,7 @@ header {
     .logo img{
         height: 30px; /* 로고 높이 */
         width: auto; /* 너비 자동 조정 */
-        cursor: pointer; 
+        cursor: pointer;
     }
 
     nav {
