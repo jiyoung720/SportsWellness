@@ -1,6 +1,6 @@
 <template>
     <header>
-        <div class="logo"> 
+        <div class="logo" @click="goToHome"> 
             <img src="@/assets/images/yiu.png" alt="Logo" />
         </div>
         <nav>
@@ -25,6 +25,11 @@ export default {
         const router = useRouter();  // setup에서 useRouter() 호출
         const isLoggedIn = ref(true);  // 로그인 상태 관리
 
+        // 로고 클릭 시 메인 페이지로 이동
+        const goToHome = () => {
+            router.push('/');
+        };
+
         // 드롭다운 아이템 클릭 시 호출되는 메소드
         const navigateToPage = (item) => {
             console.log(item);
@@ -38,6 +43,7 @@ export default {
         };
 
         return {
+            goToHome, // 메인 페이지 이동 함수
             labIntroItems: [
                 '인사말',
                 '주요 사업',
@@ -50,13 +56,6 @@ export default {
                 '운동 역학',
                 '세미나실 & 스터디룸',
             ],
-            // fitnessItems: [
-            //     '소개(헬스업)',
-            //     '측정 항목',
-            //     '측정 절차',
-            //     '피드백',
-            //     'Y-Fit 소프트',
-            // ],
             eliteItems: [
                 '체력 측정분석',
                 '경기 기록',
@@ -86,6 +85,7 @@ header {
     .logo img{
         height: 30px; /* 로고 높이 */
         width: auto; /* 너비 자동 조정 */
+        cursor: pointer; 
     }
 
     nav {
