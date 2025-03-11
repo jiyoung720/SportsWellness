@@ -20,6 +20,7 @@ import ExercisePhysiologyPage from '@/components/details/ExercisePhysiologyPage.
 import SeminarPage from '@/components/details/SeminarPage.vue';
 import KineticsPage from '@/components/details/KineticsPage.vue';
 import LocationPage from '@/components/details/LocationPage.vue';
+import HistoryPage from "@/components/details/HistoryPage.vue";
 
 export default {
     name: 'DetailPage',
@@ -32,6 +33,7 @@ export default {
         SeminarPage,
         KineticsPage,
         LocationPage,
+        HistoryPage,
         MainFooter,
     },
     setup() {
@@ -42,9 +44,11 @@ export default {
         const mainMenuMap = {
             "organization": "스포츠ㆍ웰니스연구센터 소개",
             "location": "스포츠ㆍ웰니스연구센터 소개",
+            "history": "스포츠ㆍ웰니스연구센터 소개",
             "exercisephysiology": "스포츠ㆍ웰니스연구센터 연구실",
             "kinetics": "스포츠ㆍ웰니스연구센터 연구실",
             "seminar": "스포츠ㆍ웰니스연구센터 연구실",
+            
         };
 
         const pageMap = {
@@ -53,6 +57,7 @@ export default {
             "exercisephysiology": ExercisePhysiologyPage,
             "kinetics": KineticsPage,
             "seminar": SeminarPage,
+            "history": HistoryPage,
         };
 
         const currentComponent = ref(pageMap[route.params.section] || LocationPage);

@@ -48,7 +48,7 @@ export default {
             labIntroItems: [
                 { title: '인사말', path: '/' },
                 { title: '주요 사업', path: '/' },
-                { title: '기관 연혁', path: '/' },
+                { title: '기관 연혁', path: '/detail/history' },
                 { title: '조직도 위원회', path: '/detail/organization' },
                 { title: '위치 및 연락처', path: '/detail/location' },
             ],
@@ -76,7 +76,7 @@ header {
     padding: 0.8rem 11rem;
     width: 100%;
     height: 6%; /* 높이 6% */
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
