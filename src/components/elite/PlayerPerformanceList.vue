@@ -33,9 +33,7 @@
                     <td>{{ record.ballTouches }}</td>
                     <!-- 호버된 행에만 나타나는 '자세히 보기' -->
                     <td class="last-cell">
-                        <span
-                        :style="{ visibility: hoverIndex === index ? 'visible' : 'hidden' }"
-                        >
+                        <span :style="{ visibility: hoverIndex === index ? 'visible' : 'hidden' }">
                         자세히보기  &gt;
                         </span>
                     </td>
@@ -47,10 +45,8 @@
 
 <script setup>
 import { ref, defineEmits } from 'vue';
-// import { useRouter } from 'vue-router';
 
 const emits = defineEmits(['select-record']); // ✅ 부모 컴포넌트로 이벤트 전달
-// const router = useRouter();
 
 const records = ref([
   { sport: '축구', name: '김태훈', height: 178, weight: 72, passSuccess: '82%', activity: '90%', ballTouches: '65' },
