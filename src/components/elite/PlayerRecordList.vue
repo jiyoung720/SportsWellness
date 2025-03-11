@@ -52,7 +52,19 @@ const selectRecord = (recordId) => {
 <style scoped>
 .player-record-list {
     width: 100%;
+    min-width: 100%;
     margin-top: 20px;
+}
+
+/* 호버 효과 추가 */
+.clickable-row {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.clickable-row:hover {
+    background-color: #E1F9FF !important;
+    color: #005871 !important;
 }
 
 table {
